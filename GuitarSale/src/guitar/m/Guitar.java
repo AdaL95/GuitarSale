@@ -4,7 +4,7 @@ public class Guitar {
 
 		  //¼ªËûÊôÐÔ
 	     private String serialNumber;
-	     private Double price;
+	     private String price;
          private String builder;
 	     private String type;
 	     private String backwood;
@@ -17,10 +17,10 @@ public class Guitar {
 		  public void setSerialNumber(String serialNumber) {
 			   this.serialNumber=serialNumber;
 			  }
-		  public double getPrice() {
+		  public String getPrice() {
 		    return price;
 		  }
-		  public void setPrice(double price) {
+		  public void setPrice(String price) {
 		    this.price = price;
 		  }
 		  public String getBuilder() {
@@ -45,9 +45,10 @@ public class Guitar {
 		  public String getTopWood() {
 		    return topwood;
 		  }
-		  public void setTtopwood(String topwood){
+		  public void setTopwood(String topwood){
 			  this.topwood=topwood;
 		  }
+		
 		}
 
 

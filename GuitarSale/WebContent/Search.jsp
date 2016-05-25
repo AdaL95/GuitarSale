@@ -19,7 +19,7 @@
 	   <div class="row-fuid">
 	    
 	        <div class="col-md-6">
-				<lable>type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable>
+				<lable>type&nbsp;&nbsp;&nbsp;</lable>
 				<input id="type" type="text" name="type"><br/>
 				<lable>builder&nbsp;&nbsp;&nbsp;&nbsp;</lable>
 				<input id="builder" type="text" name="builder"><br/>
