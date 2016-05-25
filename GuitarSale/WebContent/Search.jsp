@@ -21,6 +21,8 @@
 	        <div class="col-md-6">
 				<lable>type&nbsp;&nbsp;&nbsp;</lable>
 				<input id="type" type="text" name="type"><br/>
+				<lable>price</lable>
+				<input id="price" type="text" name="price"><br/>
 				<lable>builder&nbsp;&nbsp;&nbsp;&nbsp;</lable>
 				<input id="builder" type="text" name="builder"><br/>
 				<lable>backwood</lable>
@@ -29,9 +31,6 @@
 				<input id="topwood" type="text" name="topwood"><br/>
 				<input type="button"  id="search" value="搜索">
 		     </div>
-		
-		  
-           
-            
+		         
 </body>
 </html>
