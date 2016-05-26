@@ -2,17 +2,23 @@
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
+import DBconnection.DBconn;
+import guitar.m.Guitar;
 
 
 /**
@@ -47,9 +53,10 @@ public class SearchGuitar extends HttpServlet {
 	
 			
 		Connection conn=null;
-		PreparedStatement statement=null;
+		Statement statement=null;
 		ResultSet result=null;
 		SQLException ex=null;
+		List<Guitar> guitars=null;
 		
 		String a=null;
 		if(!type.equals("")){
@@ -68,14 +75,35 @@ public class SearchGuitar extends HttpServlet {
 		if(!topwood.equals("")){
 			a="select type,price,builder,backwood,topwood FROM Guitar WHERE topwood=?";
 		}
-		try{
-			Statement dataSource = null;
-			conn=dataSource.getConnection();
-			statement=conn.prepareStatement(a);
+		if(!topwood.equals("")){
+			a="select type,price,builder,backwood,topwood FROM Guitar WHERE type=? and price=?";
+		}
+		if(!topwood.equals("")){
+			a="select type,price,builder,backwood,topwood FROM Guitar WHERE type=? and price=? and builder=?";
+		}
+		if(!topwood.equals("")){
+			a="select type,price,builder,backwood,topwood FROM Guitar WHERE type=? and price=? and builder=? and backwood=?";
 			
-			statement.setString(1, SearchGuitar.gettype());
-			result=statement.executeQuery();
+		}
+		if(!topwood.equals("")){
+			a="select type,price,builder,backwood,topwood FROM Guitar WHERE type=? and price=? and builder=? and backwood=? and topwood=?";
+		}
+		try{
+            DBconn b=new DBconn();
+            conn=b.open();
+			conn=DriverManager.getConnection(a);
+			statement =conn.createStatement();
+			result=statement.executeQuery("SELECT * FROM Guitar");
+			guitars=new ArrayList<Guitar>();
+			
 			while (result.next()){
+				Guitar guitar=new Guitar();
+				guitar.setType(result.getString(1));
+				guitar.setPrice(result.getString(2));
+				guitar.setBuilder(result.getString(3));
+				guitar.setBackwood(result.getString(4));
+				guitar.setTopwood(result.getString(5));
+				guitars.add(guitar);
 			}
 			}catch (SQLException e){
 				ex=e;
@@ -101,6 +129,9 @@ public class SearchGuitar extends HttpServlet {
 						}
 					}
 				}
+				if(ex!=null){
+					throw new RuntimeException(ex);
+				}
 				
 			}
 		request.getRequestDispatcher("result.jsp").forward(request,response);
@@ -109,10 +140,7 @@ public class SearchGuitar extends HttpServlet {
 
 	
 
-	private static String gettype() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

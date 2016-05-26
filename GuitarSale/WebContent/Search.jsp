@@ -7,6 +7,7 @@
 <title>Rick'Guitar Shop</title>
 </head>
 <body>
+      <form action="SearchGuitar" method="get">
       <div class="container">
             <div class="row">
 		        

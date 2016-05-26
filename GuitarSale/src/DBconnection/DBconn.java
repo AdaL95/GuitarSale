@@ -13,7 +13,7 @@ public class DBconn {
 			driverName = "org.sqlite.JDBC";
 			dbURL="jdbc:sqlite:\\E:/old eclipse/GuitarSale/WebContent/DB/guitarsale.db";
 		}
-		public static Connection open(){
+		public static  Connection open(){
 			try {
 					Class.forName(driverName);
 				try {

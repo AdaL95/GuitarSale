@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,11 +34,11 @@
 				</div>
 		<c:forEach var="SearchGuitar" item="${requestScope.theGuitars}">
 		               
-		               <td>${SearchGuitar.type}</td>
-		               <td>${SearchGuitar.price}</td>
-		               <td>${SearchGuitar.builder}</td>
-		               <td>${SearchGuitar.backwood}</td>
-		               <td>${SearchGuitar.topwood}</td>        
+		               <td>${SearchGuitar.Type}</td>
+		               <td>${SearchGuitar.Price}</td>
+		               <td>${SearchGuitar.Builder}</td>
+		               <td>${SearchGuitar.Backwood}</td>
+		               <td>${SearchGuitar.Topwood}</td>        
 
 		</c:forEach>
 </body>
